@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <style>
+      body {
+        background-color: #fafafa;
+        font-family: "Nunito", sans-serif;
+      }
+    </style>
+</head>
+<body>
+    <table>
+      
+        <tr>
+          <td>
+            <h3>{{data.title}}:</h3>  {{data.description}}
+           
+          </td>
+          
+        </tr>
+        
+        <tr>
+          <td class="date">Due date: {{data.start_date}}</td>
+        </tr>
+        <tr>
+          <td class="date">Due date: {{data.end_date}}</td>
+        </tr>
+        <td>
+          <form action="edit/{{data.id}}">
+            <input
+              style="margin-top: 10px"
+              class="button"
+              type="submit"
+              value="Edit"
+            />
+          </form>
+
+          <form action="delete/{{data.id}}">
+            <input
+              style="margin-top: 10px"
+              class="button"
+              type="submit"
+              value="Delete"
+            />
+          </form> 
+        </td>
+      </table> 
+</body>
+</html>

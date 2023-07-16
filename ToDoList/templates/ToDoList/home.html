@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+    <style>
+      body {
+        background-color: #fafafa;
+        font-family: "Nunito", sans-serif;
+      }
+
+      input {
+        outline: none;
+        border: none;
+      }
+
+      .task-wrapper {
+        background-color: red;
+        border: 3px solid skyblue;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .button {
+        /* border: 1px solid #757575; */
+        color: #eb796f;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .title {
+        font-weight: 800;
+        color: solid black;
+        font-size: 18px;
+      }
+
+      .date {
+        font-weight: 300;
+        color: red;
+        font-size: 14px;
+      }
+
+      .desc {
+        color: #eb796f;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="task-wrapper">Welcome To the To-Do App</h1>
+    <h4 class="center">Let's see what's there in your To-Do App</h4>
+
+    <table>
+      {% for task in data%}
+      <tr>
+        <td class="title">
+          {% if task.is_completed == True %}
+          <b style="text-decoration: line-through">{{task.title}}:</b>
+          {% else %}
+          <b>{{task.title}}:</b>
+          {% endif%}
+          <a href="task/{{task.id}}" class="desc"
+            >See the whole description...</a
+          >
+        </td>
+        <td>
+          <form action="edit/{{task.id}}">
+            <input
+              style="margin-top: 10px"
+              class="button"
+              type="submit"
+              value="Edit"
+            />
+          </form>
+
+          <form action="delete/{{task.id}}">
+            <input
+              style="margin-top: 10px"
+              class="button"
+              type="submit"
+              value="Delete"
+            />
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td class="date">Due date: {{task.end_date}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <br /><br /><br />
+    <form action="create">
+      <input
+        style="margin-top: 10px"
+        class="button"
+        type="submit"
+        value="Add Tasks"
+      />
+    </form>
+  </body>
+</html>
